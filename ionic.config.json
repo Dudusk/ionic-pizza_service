@@ -1,0 +1,8 @@
+{
+  "name": "webService",
+  "app_id": "e79503aa",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
