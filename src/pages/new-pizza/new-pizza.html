@@ -40,9 +40,9 @@
       </button>
     </div>
 
-  <button *ngIf="!imageImported" ion-button block (tap)="screen()">Importer une photo</button><br />
+  <button *ngIf="!imageImported" ion-button block (tap)="importerImage()">Importer une photo</button><br />
   <div *ngIf="imageImported">
-    <button block (tap)="screen()">
+    <button block (tap)="importerImage()">
       <img [src]="imageImported" *ngIf="imageImported" />
     </button>
   </div>
