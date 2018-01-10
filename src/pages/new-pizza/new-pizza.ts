@@ -174,6 +174,7 @@ export class NewPizzaPage {
       targetHeight: 1000
     }).then((imageData) => {
       this.base64Image = "data:image/jpeg;base64," + imageData;
+      this.newPizza.picture = this.base64Image;
     }, (err) => {
       console.log(err);
     });
@@ -191,6 +192,7 @@ export class NewPizzaPage {
 
     this.camera.getPicture(options).then((imageData) => {
       this.imageImported = 'data:image/jpeg;base64,' + imageData;
+      this.newPizza.picture = this.imageImported;
     }, (err) => {
       console.log(err);
     });
