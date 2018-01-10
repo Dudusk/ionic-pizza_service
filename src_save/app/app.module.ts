@@ -14,7 +14,6 @@ import { AdminPage } from '../pages/admin/admin';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Camera } from '@ionic-native/camera';
 import { PizzaServices } from '../providers/pizza-services/pizza-services';
 
 @NgModule({
@@ -48,7 +47,6 @@ import { PizzaServices } from '../providers/pizza-services/pizza-services';
     StatusBar,
     SplashScreen,
     HttpClient,
-    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PizzaServices
   ]

@@ -1,0 +1,63 @@
+<!--
+  Generated template for the NewPizzaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Nouvelle Pizza</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="reload()">
+        <ion-icon name="ios-refresh-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h4>Création d'une nouvelle Pizza</h4>
+
+  <ion-item>
+    <ion-label color="primary" stacked>Nom de la pizza</ion-label>
+    <ion-input type="text" placeholder="Nom de la pizza" [(ngModel)]="newPizza.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" stacked>Description</ion-label>
+    <ion-textarea type="text" placeholder="Description" [(ngModel)]="newPizza.desc"></ion-textarea>
+  </ion-item>
+
+  <!-- Image -->
+  <ion-item>
+    <ion-label color="primary" stacked>Image</ion-label>
+    <ion-input type="email" placeholder="Picture" [(ngModel)]="newPizza.picture"></ion-input>
+  </ion-item>
+  <!-- Image -->
+
+  <ion-item>
+    <ion-label color="primary" stacked>Prix</ion-label>
+    <ion-input type="text" placeholder="Prix" [(ngModel)]="newPizza.price"></ion-input>
+  </ion-item>
+
+  <ion-list>
+    <ion-list-header>
+      Ingrédients
+    </ion-list-header>
+    <ion-item text-wrap *ngFor="let ingred of ingreds">
+      {{ ingred }}
+    </ion-item>
+  </ion-list>
+
+  <button (tap)="selectIngredients()" ion-button icon-start>
+    <ion-icon ios="ios-hammer" md="md-hammer"></ion-icon> Ingrédients
+  </button>
+  <button (tap)="create()" ion-button icon-end>
+    <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>&nbsp;Créer !
+  </button>
+
+
+</ion-content>
