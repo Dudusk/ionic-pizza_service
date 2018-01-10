@@ -36,14 +36,14 @@
     <button *ngIf="!base64Image" ion-button block (tap)="screen()">Prendre une photo</button><br />
     <div *ngIf="base64Image">
       <button block (tap)="screen()">
-        <img [src]="base64Image" *ngIf="base64Image" />
+        <img [src]="base64Image" *ngIf="base64Image" [(ngModel)]="newPizza.picture" />
       </button>
     </div>
 
   <button *ngIf="!imageImported" ion-button block (tap)="importerImage()">Importer une photo</button><br />
   <div *ngIf="imageImported">
     <button block (tap)="importerImage()">
-      <img [src]="imageImported" *ngIf="imageImported" />
+      <img [src]="imageImported" *ngIf="imageImported" [(ngModel)]="newPizza.picture" />
     </button>
   </div>
 
