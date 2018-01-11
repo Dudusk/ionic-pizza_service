@@ -14,3 +14,52 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+
+ion-content, ion-card, button{
+  background-color: #34495e !important;
+}
+
+.item, h4, h2, h3 {
+  background-color: #34495e;
+  color: #ecf0f1;
+}
+
+ion-card-title{
+  color: #dbdddf!important;
+}
+
+.alert-wrapper{
+  background-color: #34495e !important;
+}
+
+p {
+  color: #bdc3c7!important;
+}
+
+.tabbar, show-tabbar{
+  background-color: #2c3e50!important;
+}
+
+.toolbar-background, toolbar-background-ios{
+  background-color: #2c3e50!important;
+}
+
+.toolbar-title, toolbar-title-ios{
+  color: #bdc3c7!important;
+}
+
+/* Buttons */
+.primary-button{
+  background-color: #2980b9!important;
+}
+
+.orange-button{
+  background-color: #e67e22!important;
+}
+
+.valid-button{
+  background-color: #2ecc71!important;
+}
+

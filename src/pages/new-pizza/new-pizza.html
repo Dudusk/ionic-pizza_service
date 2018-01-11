@@ -10,7 +10,7 @@
     <ion-title>Nouvelle Pizza</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="reload()">
-        <ion-icon name="ios-refresh-outline"></ion-icon>
+        &nbsp;<ion-icon name="ios-refresh-outline"></ion-icon>&nbsp;
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -18,7 +18,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="aze">
   <h4>Création d'une nouvelle Pizza</h4>
 
   <ion-item>
@@ -33,14 +33,14 @@
 
   <!-- Image -->
     <ion-label color="primary" stacked>Image de la pizza</ion-label>
-    <button *ngIf="!base64Image" ion-button block (tap)="screen()">Prendre une photo</button><br />
+    <button class="primary-button" *ngIf="!base64Image" ion-button block (tap)="screen()">Prendre une photo</button><br />
     <div *ngIf="base64Image">
       <button block (tap)="screen()">
         <img [src]="base64Image" *ngIf="base64Image" />
       </button>
     </div>
 
-  <button *ngIf="!imageImported" ion-button block (tap)="importerImage()">Importer une photo</button><br />
+  <button class="primary-button" *ngIf="!imageImported" ion-button block (tap)="importerImage()">Importer une photo</button><br />
   <div *ngIf="imageImported">
     <button block (tap)="importerImage()">
       <img [src]="imageImported" *ngIf="imageImported"  />
@@ -63,10 +63,10 @@
     </ion-item>
   </ion-list>
 
-  <button (tap)="selectIngredients()" ion-button icon-start>
+  <button class="orange-button" (tap)="selectIngredients()" ion-button icon-start>
     <ion-icon ios="ios-hammer" md="md-hammer"></ion-icon> Ingrédients
   </button>
-  <button (tap)="create()" ion-button icon-end>
+  <button class="valid-button" (tap)="create()" ion-button icon-end>
     <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>&nbsp;Créer !
   </button>
 
