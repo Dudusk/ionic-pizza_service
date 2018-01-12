@@ -12,7 +12,7 @@ import {Pizza} from "../../models/pizza";
 @Injectable()
 export class PanierServiceProvider {
 
-  private readonly url = "http://localhost:3000/panier/";
+  private readonly url = "http://172.20.10.4:3000/panier/";
 
   constructor(public http: HttpClient) {
     console.log('Hello PanierServiceProvider Provider');
