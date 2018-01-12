@@ -69,7 +69,7 @@ export class PizzaServices {
           this.presentToast("La pizza a été créée avec succès !");
         }, error => {
           console.log(error);// Error getting the data
-          this.presentToast("La pizza n'a pas été créée.");
+          this.presentToast("La pizza n'a pas été créée." + error);
         });
     });
   }
@@ -84,7 +84,7 @@ export class PizzaServices {
           },
           error => {
             console.log("Error", error);
-            this.presentToast("La pizza n'a pas été modifiée..");
+            this.presentToast("La pizza n'a pas été modifiée.." + error);
           }
         );
     })
@@ -99,7 +99,7 @@ export class PizzaServices {
         },
         error => {
           console.log("Error", error);
-          this.presentToast("La pizza n'a pas été supprimée..");
+          this.presentToast("La pizza n'a pas été supprimée.." + error);
         }
       );
   }

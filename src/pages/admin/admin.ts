@@ -39,6 +39,7 @@ export class AdminPage {
   deletePizza(event, item){
     console.log(item);
     this.pizzaServ.delete(item.id);
+    this.reload();
   }
 
   reload(){

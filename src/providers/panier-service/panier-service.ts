@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Panier } from "../../models/panier";
-import {Pizza} from "../../models/pizza";
+import {ToastController} from "ionic-angular";
 
 /*
   Generated class for the PanierServiceProvider provider.
@@ -14,17 +14,30 @@ export class PanierServiceProvider {
 
   private readonly url = "http://172.20.10.4:3000/panier/";
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private toastCtrl: ToastController) {
     console.log('Hello PanierServiceProvider Provider');
   }
+
+  presentToast(message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'bottom'
+    });
+
+    toast.present();
+  }
+
 
   post(postParams: any){
     return new Promise<Array<Panier>>(resolve => {
       this.http.post(this.url, postParams)
         .subscribe(data => {
           console.log(data);
+          this.presentToast("La pizza a été ajoutée au panier !");
         }, error => {
           console.log(error);// Error getting the data
+          this.presentToast("La pizza n'a pas été ajoutée dans le panier..");
         });
     });
   }
@@ -41,7 +54,8 @@ export class PanierServiceProvider {
             panierArray.push(new Panier(data[i]['id'], data[i]['name'], data[i]['desc'], data[i]['picture'], data[i]['price'], data[i]['ingredients'], data[i]['quantity']))
           }
           resolve(panierArray);
-          console.log("Panier Array : " + panierArray);
+          console.log('Panier : ' + panierArray);
+          return(panierArray);
         });
       // <--
     });
@@ -52,10 +66,11 @@ export class PanierServiceProvider {
       this.http.put(this.url + id, body)
         .subscribe(
           data => {
-            console.log("Modificiation avec succès ", data);
+             this.presentToast("La quantité de pizza a été modifiée avec succès !");
           },
           error => {
             console.log("Error", error);
+            this.presentToast("Impossible" + error);
           }
         );
     })
@@ -65,7 +80,6 @@ export class PanierServiceProvider {
     this.http.delete(this.url + id)
       .subscribe(
         data => {
-          console.log("Suppression réussie ", data);
         },
         error => {
           console.log("Error", error);

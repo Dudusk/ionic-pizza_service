@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>cart</ion-title>
+    <ion-title>Mon panier</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="reload()">
         &nbsp;<ion-icon name="ios-refresh-outline"></ion-icon>&nbsp;
@@ -26,25 +26,36 @@
         {{ items.name }}
       </ion-card-title>
       <p>
-        <b>Prix :</b> {{items.price}}  € <br />
-        <button (tap)="itemTappedPlus($event, items)">Add</button>
+        <b>Prix :</b> {{items.price * items.quantity}}  € <br />
+        <b>Quantité :</b> {{items.quantity}}
       </p>
+      <button (tap)="itemTappedMoins($event, items)" ion-button color="save">
+        moins
+      </button>
+      <button (tap)="itemTappedPlus($event, items)" ion-button color="save">
+        Plus
+      </button>
+      <button (tap)="deletePizza($event, items)" ion-button color="save">
+        Del
+      </button>
     </ion-card-content>
   </ion-card>
+
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
     <ion-buttons start>
-      <button (tap)="clearCart()" ion-button color="save">
+      <button (tap)="vider()" ion-button color="save">
         Vider
       </button>
     </ion-buttons>
     <ion-title>Total : {{total}}</ion-title>
     <ion-buttons end>
-      <button ion-button color="save">
+      <button (tap)="commander()" ion-button color="save">
         Commander
       </button>
     </ion-buttons>
+
   </ion-toolbar>
 </ion-footer>
