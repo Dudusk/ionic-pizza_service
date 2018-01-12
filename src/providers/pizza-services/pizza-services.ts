@@ -12,7 +12,7 @@ import { ToastController } from "ionic-angular";
 @Injectable()
 export class PizzaServices {
   //http://10.13.0.248:3000/pizza/
-  private readonly url = "http://172.20.10.4:3000/pizza/";
+  private readonly url = "http://localhost:3000/pizza/";
 
   constructor(private http: HttpClient, private toastCtrl: ToastController) {
     console.log('Hello PizzaServicesProvider Provider');
@@ -54,7 +54,7 @@ export class PizzaServices {
   		this.http.get(this.url)
   			.subscribe((data: Array<any>) => {
 	  			//console.log(data[0]);
-  				pizzaArraySearched.push(new Pizza(data[idPizza]['id'], data[idPizza]['name'], data[idPizza]['desc'], data[idPizza]['picture'], data[idPizza]['price'], data[idPizza]['ingredients']))
+          pizzaArraySearched.push(new Pizza(data[idPizza]['id'], data[idPizza]['name'], data[idPizza]['desc'], data[idPizza]['picture'], data[idPizza]['price'], data[idPizza]['ingredients']))
 	  		resolve(pizzaArraySearched);
 	  	});
   		// <--

@@ -38,8 +38,8 @@
   <br />
 
   <div *ngIf="idDeLaPizza">
+    <h3 style="text-align: center;"><u>Searched</u></h3>
     <button *ngFor="let items of itemSearched" (tap)="itemTapped($event, items)">
-      Searched <br />
       <ion-card>
         <img [src]="items.picture" *ngIf="items.picture" />
         <ion-card-content>

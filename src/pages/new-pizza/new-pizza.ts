@@ -164,6 +164,11 @@ export class NewPizzaPage {
     }
   }
 
+  gne(price){
+    console.log("change");
+    this.newPizza.price = price + ".00";
+  }
+
   reload(){
     this.navCtrl.setRoot(this.navCtrl.getActive().component);
   }

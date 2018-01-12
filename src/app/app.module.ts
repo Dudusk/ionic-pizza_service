@@ -11,11 +11,13 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { ModifPizzaPage } from '../pages/modif-pizza/modif-pizza';
 import { ShowPizzaPage } from '../pages/show-pizza/show-pizza';
 import { AdminPage } from '../pages/admin/admin';
+import { CartPage } from '../pages/cart/cart';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
 import { PizzaServices } from '../providers/pizza-services/pizza-services';
+import { PanierServiceProvider } from '../providers/panier-service/panier-service';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { PizzaServices } from '../providers/pizza-services/pizza-services';
     TabsPage,
     ModifPizzaPage,
     ShowPizzaPage,
-    AdminPage
+    AdminPage,
+    CartPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { PizzaServices } from '../providers/pizza-services/pizza-services';
     TabsPage,
     ModifPizzaPage,
     ShowPizzaPage,
-    AdminPage
+    AdminPage,
+    CartPage
   ],
   providers: [
     StatusBar,
@@ -50,7 +54,8 @@ import { PizzaServices } from '../providers/pizza-services/pizza-services';
     HttpClient,
     Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PizzaServices
+    PizzaServices,
+    PanierServiceProvider
   ]
 })
 export class AppModule {}
