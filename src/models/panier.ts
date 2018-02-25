@@ -1,12 +1,3 @@
-// export class Panier {
-//
-//   constructor(public id: number = null,
-//               public pizzas: string = ""
-//   ) {}
-//
-//
-// }
-
 export class Panier {
   //tuple : Array<[Pizza, any]>;
   constructor(public id: number = null,

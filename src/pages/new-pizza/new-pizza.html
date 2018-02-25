@@ -32,13 +32,13 @@
   </ion-item>
 
   <!-- Image -->
-    <ion-label color="primary" stacked>Image de la pizza</ion-label>
-    <button class="primary-button" *ngIf="!base64Image" ion-button block (tap)="screen()">Prendre une photo</button><br />
-    <div *ngIf="base64Image">
-      <button block (tap)="screen()">
-        <img [src]="base64Image" *ngIf="base64Image" />
-      </button>
-    </div>
+  <ion-label color="primary" stacked>Image de la pizza</ion-label>
+  <button class="primary-button" *ngIf="!base64Image" ion-button block (tap)="screen()">Prendre une photo</button><br />
+  <div *ngIf="base64Image">
+    <button block (tap)="screen()">
+      <img [src]="base64Image" *ngIf="base64Image" />
+    </button>
+  </div>
 
   <button class="primary-button" *ngIf="!imageImported" ion-button block (tap)="importerImage()">Importer une photo</button><br />
   <div *ngIf="imageImported">

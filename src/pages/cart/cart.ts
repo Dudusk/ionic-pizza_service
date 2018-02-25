@@ -20,8 +20,9 @@ import { PizzaServices } from "../../providers/pizza-services/pizza-services";
 export class CartPage {
 
   panier: any;
+  panierSplited
   pizzas: any;
-  total : number = 0;
+  total;
   cleared = true;
   etat = true; //true = Plus ou false = moins
 
@@ -44,10 +45,11 @@ export class CartPage {
   }
 
   totalCount() {
+    this.total = 0;
     if (this.etat) {
       for (let i = 0; i < this.panier.length; i++) {
         if (this.panier[i].price != 0 && this.total != 0) {
-          this.total += parseFloat(this.panier[i].price);
+          this.total = parseFloat(this.total) + parseFloat(this.panier[i].price) * parseFloat((this.panier[i].quantity));
         } else {
           this.total = parseFloat(this.panier[i].price);
         }
@@ -55,7 +57,7 @@ export class CartPage {
     } else {
       for (let i = 0; i < this.panier.length; i++) {
         if (this.panier[i].price != 0 && this.total != 0) {
-          this.total -= parseFloat(this.panier[i].price);
+          this.total = parseFloat(this.total) - parseFloat(this.panier[i].price) * parseFloat((this.panier[i].quantity));
         } else {
           this.total = parseFloat(this.panier[i].price);
         }
@@ -78,7 +80,8 @@ export class CartPage {
     );
 
     //Get pizzas
-    this.pizzaService.get().then( success =>{
+    //Get panier plutot
+    this.panierService.get().then( success =>{
       this.pizzas = success;
     });
   }
@@ -99,21 +102,42 @@ export class CartPage {
   //   )
   // }
 
+
+  // async itemTappedMoins(event, item) {
+  //   //let panierAsync = await this.panier;
+  //   console.log("Panier : "  + this.panier[item.id -1].name);
+  //   this.panierSplited = item;
+  //   this.panier[item.id -1].quantity--;
+  //   console.log(this.panier[item.id -1].quantity);
+  //   this.etat = false;
+  //   this.totalCount();
+  // }
+  //
+  // async itemTappedPlus(event, item) {
+  //   //let panierAsync = await this.panier;
+  //   //console.log("Panierid : "  + this.panier[item.id]);
+  //   this.panierSplited = item;
+  //   this.panier[item.id -1].quantity++;
+  //   console.log(this.panier[item.id -1].quantity);
+  //   this.etat = true;
+  //   this.totalCount();
+  // }
+
+
+
   async itemTappedMoins(event, item) {
-    //let panierAsync = await this.panier;
-    //console.log("Panier : "  + panierAsync[item.id -1].name);
     this.panier[item.id -1].quantity--;
-    console.log(this.panier[item.id -1].quantity);
-    this.etat = true;
+
+    this.panierService.put(item.id, this.panier[item.id -1])
+    this.etat = false;
     this.totalCount();
   }
 
   async itemTappedPlus(event, item) {
-    //let panierAsync = await this.panier;
-    //console.log("Panierid : "  + this.panier[item.id]);
     this.panier[item.id -1].quantity++;
-    console.log(this.panier[item.id -1].quantity);
-    this.etat = false;
+
+    this.panierService.put(item.id, this.panier[item.id -1]);
+    this.etat = true;
     this.totalCount();
   }
 

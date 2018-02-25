@@ -12,7 +12,7 @@ import {ToastController} from "ionic-angular";
 @Injectable()
 export class PanierServiceProvider {
 
-  private readonly url = "http://172.20.10.4:3000/panier/";
+  private readonly url = "http://localhost:3000/panier/";
 
   constructor(public http: HttpClient, private toastCtrl: ToastController) {
     console.log('Hello PanierServiceProvider Provider');
@@ -54,7 +54,7 @@ export class PanierServiceProvider {
             panierArray.push(new Panier(data[i]['id'], data[i]['name'], data[i]['desc'], data[i]['picture'], data[i]['price'], data[i]['ingredients'], data[i]['quantity']))
           }
           resolve(panierArray);
-          console.log('Panier : ' + panierArray);
+          console.log('Panier : ', panierArray);
           return(panierArray);
         });
       // <--
@@ -70,7 +70,7 @@ export class PanierServiceProvider {
           },
           error => {
             console.log("Error", error);
-            this.presentToast("Impossible" + error);
+            this.presentToast("Impossible" + error );
           }
         );
     })

@@ -12,7 +12,7 @@ import { ToastController } from "ionic-angular";
 @Injectable()
 export class PizzaServices {
   //http://10.13.0.248:3000/pizza/
-  private readonly url = "http://172.20.10.4:3000/pizza/";
+  private readonly url = "http://localhost:3000/pizza/";
 
   constructor(private http: HttpClient, private toastCtrl: ToastController) {
     console.log('Hello PizzaServicesProvider Provider');

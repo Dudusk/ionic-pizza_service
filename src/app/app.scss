@@ -17,8 +17,12 @@
 
 
 
-ion-content, ion-card, button{
+ion-content, ion-card, button {
   background-color: #34495e !important;
+}
+
+.card {
+  background-color: #3f5973!important;
 }
 
 .item, h4, h2, h3 {
@@ -47,8 +51,26 @@ p {
 }
 
 .toolbar-title, toolbar-title-ios{
-  color: #bdc3c7!important;
+  color: white!important;
 }
+
+.tabs-ios .tab-button-icon, .tab-button{
+  color: #e67e22 !important;
+}
+
+//Button selectionnés
+.tabs-ios, .tab-button:hover:not(.disable-hover), .tabs-ios, .tab-button[aria-selected=true]{
+  color: #32db64!important;
+
+}
+.tabs-ios .tab-button[aria-selected=true] .tab-button-icon{
+  color: #32db64!important;
+
+}
+//.tabs-ios:active .tab-button-icon:active{
+//  color: red;
+//}
+
 
 /* Buttons */
 .primary-button{
