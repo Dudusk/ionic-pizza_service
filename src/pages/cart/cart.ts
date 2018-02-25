@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, ToastController} from 'ionic-angular';
+import {IonicPage, NavController, ToastController, AlertController} from 'ionic-angular';
 import { PanierServiceProvider } from "../../providers/panier-service/panier-service";
 import { PizzaServices } from "../../providers/pizza-services/pizza-services";
 
@@ -30,7 +30,8 @@ export class CartPage {
   constructor(public navCtrl: NavController,
               public panierService: PanierServiceProvider,
               private toastCtrl: ToastController,
-              private pizzaService: PizzaServices) {
+              private pizzaService: PizzaServices,
+              private alertCtrl: AlertController) {
 
   }
 
@@ -86,50 +87,39 @@ export class CartPage {
     });
   }
 
-  // validate(item, quantity){
-  //   let quantityOfPanier = this.panier[item.id].quantity;
-  //   this.panier[item.id].quantity = quantityOfPanier;
-  //
-  //   console.log("Gne : " + this.panier[item.id].id)
-  //
-  //   this.panierService.put(item.id, this.panier[item.id]).then(
-  //     (success) => {
-  //       console.log(success);
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   )
-  // }
-
-
-  // async itemTappedMoins(event, item) {
-  //   //let panierAsync = await this.panier;
-  //   console.log("Panier : "  + this.panier[item.id -1].name);
-  //   this.panierSplited = item;
-  //   this.panier[item.id -1].quantity--;
-  //   console.log(this.panier[item.id -1].quantity);
-  //   this.etat = false;
-  //   this.totalCount();
-  // }
-  //
-  // async itemTappedPlus(event, item) {
-  //   //let panierAsync = await this.panier;
-  //   //console.log("Panierid : "  + this.panier[item.id]);
-  //   this.panierSplited = item;
-  //   this.panier[item.id -1].quantity++;
-  //   console.log(this.panier[item.id -1].quantity);
-  //   this.etat = true;
-  //   this.totalCount();
-  // }
-
-
 
   async itemTappedMoins(event, item) {
     this.panier[item.id -1].quantity--;
 
-    this.panierService.put(item.id, this.panier[item.id -1])
-    this.etat = false;
+    if(this.panier[item.id -1].quantity <= 0){
+
+      let alert = this.alertCtrl.create({
+        title: 'Confirmer',
+        message: 'Voulez-vous vraiment supprimer la pizza ?',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              this.panier[item.id -1].quantity++;
+            }
+          },
+          {
+            text: 'Confirmer',
+            handler: () => {
+              this.panierService.put(item.id, this.panier[item.id -1])
+              this.etat = false;
+              this.panierService.delete(item.id);
+              this.reload();
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+
+
+
     this.totalCount();
   }
 

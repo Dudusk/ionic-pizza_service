@@ -63,9 +63,21 @@ p {
   color: #32db64!important;
 
 }
-.tabs-ios .tab-button[aria-selected=true] .tab-button-icon{
-  color: #32db64!important;
+.tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
+  color: #32db64 !important;
+}
 
+.alert-message, .alert-ios, .alert-checkbox-label{
+  color: darkgrey!important;
+}
+
+
+.alert-ios .alert-checkbox-icon{
+  border-color: green!important;
+}
+
+.alert-ios [aria-checked=true] .alert-checkbox-icon{
+  background-color: darkgreen;
 }
 //.tabs-ios:active .tab-button-icon:active{
 //  color: red;
